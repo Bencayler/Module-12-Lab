@@ -1,20 +1,24 @@
 package com.example.demo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.persistence.GeneratedValue;
+import java.util.*;
 
 @Entity
 public class Vehicle {
 
     @Id
-    // @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
     private String manufacturerName;
     private int milesOnVehicle;
     private int price;
     private int numberOfSeats;
-    @ElementCollection
-    private ArrayList<Option> options;
+    @OneToMany
+    private List<Option> options;
 
 
     public Vehicle(long id, String manufacturerName, int milesOnVehicle, int price, int
@@ -63,7 +67,7 @@ public class Vehicle {
         this.id = id;
     }
 
-    public ArrayList<Option> getOptions() {
+    public List<Option> getOptions() {
         return options;
     }
 
